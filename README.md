@@ -204,12 +204,13 @@ Passionate about Backend Development & System Design
 
 # 🏁 Conclusion
 
-This project demonstrates a complete backend API workflow using Go, PostgreSQL, and SQLC, following best practices suitable for internships and entry-level backend roles.
+This project demonstrates a complete backend API workflow using Go, PostgreSQL, and SQLC.
 
 # ⚠️ Disclaimer
 
-This project is developed strictly for educational, learning, evaluation, and internship assessment purposes.
+This project is developed strictly for educational, learning, and evaluation purposes.
 
 It is not intended for production use.
 
 The author is not responsible for any misuse of this code outside its intended purpose.
+
