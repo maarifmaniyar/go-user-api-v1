@@ -214,3 +214,9 @@ It is not intended for production use.
 
 The author is not responsible for any misuse of this code outside its intended purpose.
 
+
+## 📄 License
+
+This project is licensed under the **MIT License**.
+
+
