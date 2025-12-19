@@ -1,4 +1,4 @@
-Go User API – DOB & Age Calculation
+# Go User API – DOB & Age Calculation
 📌 Overview
 
 This project is a RESTful backend API built using Go and GoFiber to manage users with their Name and Date of Birth (DOB).
@@ -6,7 +6,29 @@ The API dynamically calculates and returns the user’s age when fetching user d
 
 The project follows a clean, layered architecture and uses PostgreSQL with SQLC for database access.
 
-🛠️ Tech Stack
+Important Note: For Password
+## 🔐 Database Credentials
+
+For security reasons, database credentials are **not included** in this repository.
+
+If you need access, please contact me:
+
+📧 **Email:** maarifmaniyar5@gmail.com
+
+# 👨‍💻 Author
+
+Mohammed Maarif Maniyar
+
+B.Tech – Artificial Intelligence & Machine Learning
+
+Passionate about Backend Development & System Design
+
+📧 Email: maarifmaniyar5@gmail.com
+
+🔗 Portfolio: (https://maarifmaniyar.github.io/)
+
+
+#  Tech Stack
 
 Go
 
@@ -44,14 +66,14 @@ go-user-api-v1/
 ├── go.mod
 └── README.md
 
-🗄️ Database Schema
+#  Database Schema
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
   name TEXT NOT NULL,
   dob DATE NOT NULL
 );
 
-⚙️ Setup Instructions
+#  Setup Instructions
 1️⃣ Prerequisites
 
 Go (v1.20+ recommended)
@@ -90,7 +112,7 @@ db, err := sql.Open(
 )
 
 
-🔴 Replace YOUR_PASSWORD with your PostgreSQL password.
+#  Replace YOUR_PASSWORD with your PostgreSQL password.
 
 4️⃣ Install Dependencies
 go mod tidy
@@ -136,7 +158,7 @@ Response
 
 📌 Age is calculated dynamically using Go’s time package.
 
-🧠 Key Features
+#  Key Features
 
 Clean layered architecture
 
@@ -150,7 +172,7 @@ RESTful API design
 
 Error handling and logging
 
-🚀 How to Test
+#  How to Test
 
 Use Thunder Client or Postman:
 
@@ -160,7 +182,7 @@ Send POST request to /users
 
 Fetch data using GET /users/{id}
 
-📌 Notes
+# Notes
 
 Age is not stored in the database
 
@@ -168,6 +190,26 @@ Age is calculated dynamically when fetching user details
 
 Database connection issues usually result from incorrect credentials
 
-🏁 Conclusion
+## 👨‍💻 Author
+
+Mohammed Maarif Maniyar
+
+B.Tech – Artificial Intelligence & Machine Learning
+
+Passionate about Backend Development & System Design
+
+📧 Email: maarifmaniyar5@gmail.com
+
+🔗 Portfolio: (https://maarifmaniyar.github.io/)
+
+# 🏁 Conclusion
 
 This project demonstrates a complete backend API workflow using Go, PostgreSQL, and SQLC, following best practices suitable for internships and entry-level backend roles.
+
+# ⚠️ Disclaimer
+
+This project is developed strictly for educational, learning, evaluation, and internship assessment purposes.
+
+It is not intended for production use.
+
+The author is not responsible for any misuse of this code outside its intended purpose.
