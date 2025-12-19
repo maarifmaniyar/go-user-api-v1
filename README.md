@@ -1,131 +1,173 @@
-# Go User API 
+Go User API – DOB & Age Calculation
+📌 Overview
 
-A simple RESTful User Management API built using **Go**, **Fiber**, **PostgreSQL**, and **sqlc**.
+This project is a RESTful backend API built using Go and GoFiber to manage users with their Name and Date of Birth (DOB).
+The API dynamically calculates and returns the user’s age when fetching user details.
 
-This project demonstrates clean architecture with handlers, routes, repositories, and database access using generated SQL code.
+The project follows a clean, layered architecture and uses PostgreSQL with SQLC for database access.
 
----
+🛠️ Tech Stack
 
-#  Features
+Go
 
-- Create a user
-- Get user by ID
-- PostgreSQL database
-- sqlc for type-safe SQL
-- Fiber web framework
-- Thunder Client / Postman tested
+GoFiber
 
----
+PostgreSQL
 
-#  Tech Stack
+SQLC
 
-- **Go**
-- **Fiber**
-- **PostgreSQL**
-- **sqlc**
-- **pgAdmin**
-- **Thunder Client / Postman**
+Thunder Client / Postman
 
----
+pgAdmin
 
-#   Project Structure
+lib/pq (PostgreSQL driver)
 
+📂 Project Structure
 go-user-api-v1/
-│
 ├── cmd/
-│ └── server/
-│ └── main.go
-│
-├── internal/
-│ ├── handler/
-│ ├── repository/
-│ ├── routes/
-│
+│   └── server/
+│       └── main.go
 ├── db/
-│ └── sqlc/
-│
-├── migrations/
-│ ├── schema.sql
-│ └── queries.sql
-│
+│   ├── migrations/
+│   │   └── schema.sql
+│   └── sqlc/
+│       ├── queries.sql
+│       └── generated files
+├── internal/
+│   ├── handler/
+│   ├── repository/
+│   ├── routes/
+│   ├── service/
+│   ├── middleware/
+│   ├── models/
+│   └── logger/
 ├── go.mod
-├── go.sum
 └── README.md
 
-
----
-
-##  Database Schema
-
-```sql
+🗄️ Database Schema
 CREATE TABLE users (
-    id SERIAL PRIMARY KEY,
-    name TEXT NOT NULL,
-    dob DATE NOT NULL
+  id SERIAL PRIMARY KEY,
+  name TEXT NOT NULL,
+  dob DATE NOT NULL
 );
 
-# How to Run the Project
-1️. Start PostgreSQL
+⚙️ Setup Instructions
+1️⃣ Prerequisites
 
-Make sure PostgreSQL is running and the database exists:
-CREATE DATABASE userdb;
+Go (v1.20+ recommended)
 
-2️. Update DB Connection (main.go)
-postgres://postgres:YOUR_PASSWORD@localhost:5432/userdb?sslmode=disable
+PostgreSQL
 
-3️. Run the Server
+pgAdmin
+
+Thunder Client or Postman
+
+2️⃣ Database Setup
+
+Open pgAdmin
+
+Connect to PostgreSQL
+
+Select database: postgres
+
+Open Query Tool
+
+Run:
+
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY,
+  name TEXT NOT NULL,
+  dob DATE NOT NULL
+);
+
+3️⃣ Update Database Credentials
+
+Edit cmd/server/main.go:
+
+db, err := sql.Open(
+	"postgres",
+	"postgres://postgres:YOUR_PASSWORD@localhost:5432/postgres?sslmode=disable",
+)
+
+
+🔴 Replace YOUR_PASSWORD with your PostgreSQL password.
+
+4️⃣ Install Dependencies
+go mod tidy
+
+5️⃣ Run the Server
 go run cmd/server/main.go
 
 
-Server will start on:
+You should see:
 
-http://localhost:8080
+Server running on :8080
 
- API Endpoints
- Create User
+🔌 API Endpoints
+➕ Create User
+
 POST /users
 
-
 Request Body
-
 {
   "name": "Alice",
   "dob": "1990-05-10"
 }
 
--> Get User by ID
-GET /users/:id
+Response
+{
+  "id": 1,
+  "name": "Alice",
+  "dob": "1990-05-10"
+}
+
+🔍 Get User by ID
+
+GET /users/{id}
+
+Response
+{
+  "id": 1,
+  "name": "Alice",
+  "dob": "1990-05-10",
+  "age": 35
+}
 
 
-Example:
+📌 Age is calculated dynamically using Go’s time package.
 
-GET /users/1
+🧠 Key Features
 
--> Testing
+Clean layered architecture
 
-Use Thunder Client or Postman
+Dynamic age calculation
 
-Content-Type: application/json
+SQLC for type-safe database queries
 
--> Future Improvements
+PostgreSQL integration
 
-Get all users
+RESTful API design
 
-- Update & delete user
+Error handling and logging
 
-- Environment variables
+🚀 How to Test
 
-- Docker support
+Use Thunder Client or Postman:
 
-- Authentication
+Start the server
 
-- Swagger documentation
+Send POST request to /users
 
-👤 Author
+Fetch data using GET /users/{id}
 
-MOhammed Maarif Maniyar
-GitHub: https://github.com/maarifmaniyar
+📌 Notes
 
+Age is not stored in the database
 
+Age is calculated dynamically when fetching user details
 
+Database connection issues usually result from incorrect credentials
 
+🏁 Conclusion
+
+This project demonstrates a complete backend API workflow using Go, PostgreSQL, and SQLC, following best practices suitable for internships and entry-level backend roles.
